@@ -25,16 +25,19 @@ class NoticeRepository {
             ) {
                 if(response.isSuccessful){
                     val doc : Document = Jsoup.parse(response.body()!!.string())
-                    Log.d("DOCUMENT", doc.toString())
+
                     val items = ArrayList<NoticeItem>()
+
                     val title : Elements = doc.select("tr[class=cell_notice]").select("td[class=cell_type01]")
                     val date : Elements = doc.select("tr[class=cell_notice]").select("td:nth-child(5n)")
                     val writer : Elements = doc.select("tr[class=cell_notice]").select("td:nth-child(4n)")
+
                     for(index in title.indices) { //indices -> 0..2
                         println("item at $index is ${title[index].text()}")
                         println("item at $index is ${writer[index].text()}")
                         println("item at $index is ${date[index].text()}")
-                        NoticeItem(title[index].text(), date[index].text(), writer[index].text())
+
+                        items.add(NoticeItem(title[index].text(), date[index].text(), writer[index].text()))
 
                     }
                     mCallback.loadComplete(items)

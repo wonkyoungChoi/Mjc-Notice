@@ -26,9 +26,12 @@ class NoticeFragment : Fragment() {
         savedInstanceState: Bundle?): View {
         _viewBinding = FramentNoticeBinding.inflate(inflater, container, false)
 
+
         noticeRepository.loadNotice(page, this)
         Log.v("로그", "로그")
 
+        noticeAdapter = NoticeAdapter()
+        viewBinding.recyclerView.adapter = noticeAdapter
         viewBinding.recyclerView.layoutManager = LinearLayoutManager(context)
 
         return viewBinding.root
