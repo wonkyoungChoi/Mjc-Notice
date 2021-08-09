@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_notice"
+        android:icon="@drawable/notice"
+        android:visible="true"
+        android:enabled="true"
+        android:title="게시판"/>
+
+    <item
+        android:id="@+id/action_notification"
+        android:icon="@drawable/notification"
+        android:visible="true"
+        android:enabled="true"
+        android:title="알림"/>
+
+
+    <item
+        android:id="@+id/action_setting"
+        android:icon="@drawable/setting"
+        android:visible="true"
+        android:enabled="true"
+        android:title="설정"/>
+
+
+
+</menu>
