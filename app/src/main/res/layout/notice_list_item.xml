@@ -6,6 +6,7 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:orientation="vertical"
+    android:id="@+id/layout_notice"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
@@ -19,7 +20,6 @@
             android:layout_height="0dp"
             android:gravity="center_vertical"
             android:textColor="@android:color/black"
-            android:text="공지사항 예시"
             android:paddingRight="8dp"
             android:layout_weight="1"
             android:paddingEnd="8dp" />
@@ -33,8 +33,7 @@
             <TextView
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2021-04-02" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -44,8 +43,7 @@
             <TextView
                 android:id="@+id/writer"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2021-04-02" />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

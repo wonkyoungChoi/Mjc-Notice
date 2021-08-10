@@ -1,17 +1,29 @@
 package com.example.mjcnotice.network
 
 
+import okhttp3.ResponseBody
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.jaxb.JaxbConverterFactory
+import retrofit2.http.GET
+import retrofit2.http.Query
 
+interface NoticeService {
+    @GET("list.do?bbs_mst_idx=BM0000000026&menu_idx=66&data_idx=&memberAuth=Y&")
+    fun loadNotice(@Query("pageIndex") pageIndex: String): Call<ResponseBody>
+}
 
-object NoticeClient {
+object NoticeApi {
     private const val baseUrl = "https://www.mjc.ac.kr/bbs/data/"
     private val retrofit = Retrofit.Builder()
         .baseUrl(baseUrl)
         .addConverterFactory(JaxbConverterFactory.create())
         .build()
 
-    val service = retrofit.create(NoticeService::class.java)!!
+    fun createApi(): NoticeService {
+        return retrofit.create(
+                NoticeService::class.java)
+    }
 }
+
