@@ -11,8 +11,8 @@ class MainViewModel : ViewModel() {
     private val notice: LiveData<Data>
         get() = noticeRepository._notice
 
-    fun loadNotice(page: Int){
-        noticeRepository.loadNotice(page)
+    fun loadNotice(page: Int, bbs_mst_idx: String, menu_idx: String){
+        noticeRepository.loadNotice(page, bbs_mst_idx, menu_idx)
     }
 
     fun getAll(): LiveData<Data> {

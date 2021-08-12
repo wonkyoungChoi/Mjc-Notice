@@ -1,7 +1,6 @@
 package com.example.mjcnotice
 
 import android.content.Intent
-import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,7 +13,9 @@ class NoticeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val VIEW_TYPE_ITEM = 0
     private val VIEW_TYPE_LOADING = 1
     private var items = ArrayList<NoticeItem>()
-    private val baseUrl = "https://www.mjc.ac.kr/bbs/data/"
+
+    private var baseUrl = "https://www.mjc.ac.kr/bbs/data/view.do?menu_idx=66&memberAuth=Y"
+
 
     inner class NoticeViewHolder(private val binding: NoticeListItemBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(notice: NoticeItem){
@@ -23,11 +24,11 @@ class NoticeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             binding.date.text = notice.date
 
             binding.layoutNotice.setOnClickListener {
-                val goUnivHomepage = Intent(Intent.ACTION_VIEW, Uri.parse(baseUrl + notice.link))
+                val goUnivHomepage = Intent(it.context, WebViewActivity::class.java)
 
-                goUnivHomepage.putExtra("url", baseUrl + notice.link)
+                goUnivHomepage.putExtra("urlStart", baseUrl)
+                goUnivHomepage.putExtra("urlEnd", notice.link)
 
-                Log.d("URLTEST", baseUrl + notice.link)
                 it.context.startActivity(goUnivHomepage)
             }
 
@@ -81,6 +82,11 @@ class NoticeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     fun deleteLoading(){
         items.removeAt(items.lastIndex) // 로딩이 완료되면 프로그레스바를 지움
+    }
+
+    fun resetList(menu_idx: String) {
+        items.clear()
+        baseUrl = "https://www.mjc.ac.kr/bbs/data/view.do?menu_idx=$menu_idx&memberAuth=Y"
     }
 
 }

@@ -10,8 +10,10 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface NoticeService {
-    @GET("list.do?bbs_mst_idx=BM0000000026&menu_idx=66&data_idx=&memberAuth=Y&")
-    fun loadNotice(@Query("pageIndex") pageIndex: String): Call<ResponseBody>
+    @GET("list.do?data_idx=&memberAuth=Y&")
+    fun loadNotice(@Query("pageIndex") pageIndex: String,
+                   @Query("bbs_mst_idx") bbs_mst_idx: String,
+                   @Query("menu_idx") menu_idx: String): Call<ResponseBody>
 }
 
 object NoticeApi {
@@ -26,4 +28,5 @@ object NoticeApi {
                 NoticeService::class.java)
     }
 }
+
 
