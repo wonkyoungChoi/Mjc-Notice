@@ -3,9 +3,11 @@ package com.example.mjcnotice
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.mjcnotice.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,6 +19,8 @@ class MainActivity : AppCompatActivity() {
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
         val view = viewBinding.root
         setContentView(view)
+
+        userIdCheck()
 
         supportFragmentManager.beginTransaction().add(viewBinding.frameContainer.id, NoticeFragment()).commit()
 
@@ -34,6 +38,25 @@ class MainActivity : AppCompatActivity() {
 
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(viewBinding.frameContainer.id, fragment).commit()
+    }
+
+    private fun userIdCheck(){
+        var auth = FirebaseAuth.getInstance()
+        val user = auth.currentUser
+
+        if(user != null){ // 이미 가입한 회원인 경우
+            //userId = user.uid
+        }else{
+            auth.signInAnonymously()
+                .addOnCompleteListener(this){ task ->
+                    if(task.isSuccessful){
+                        //userId = auth.currentUser!!.uid
+                    }else{
+                        Toast.makeText(this, "네트워크를 연결한 뒤 실행시켜주세요.", Toast.LENGTH_SHORT).show()
+                    }
+                }
+        }
+
     }
 
 }

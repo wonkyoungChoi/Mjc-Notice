@@ -29,4 +29,24 @@
         <item name="background">@color/mainBlue</item>
     </style>
 
+    <style name="headerText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/headerTextSize</item>
+        <item name="android:textColor">@color/colorBlackHighEmphasis</item>
+    </style>
+
+    <style name="bodyText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/bodyTextSize</item>
+        <item name="android:textColor">@color/colorBlackHighEmphasis</item>
+    </style>
+
+    <style name="explainText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/explainTextSize</item>
+        <item name="android:textColor">@color/colorBlackDisabled</item>
+    </style>
 </resources>
