@@ -21,8 +21,8 @@ object KeywordApi {
         .addConverterFactory(JaxbConverterFactory.create())
         .build()
 
-    fun createApi(): NoticeService {
+    fun createApi(): KeywordService {
         return retrofit.create(
-            NoticeService::class.java)
+            KeywordService::class.java)
     }
 }

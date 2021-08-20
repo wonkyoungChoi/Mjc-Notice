@@ -1,4 +1,4 @@
-package com.example.mjcnotice
+package com.example.mjcnotice.ui.notification
 
 import android.app.Dialog
 import android.content.Context
@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.TextView
+import com.example.mjcnotice.R
 
 class KeywordDialog(
     context: Context,

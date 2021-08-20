@@ -1,6 +1,5 @@
-package com.example.mjcnotice
+package com.example.mjcnotice.ui.notification
 
-import android.app.Activity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -14,12 +13,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mjcnotice.R
 import com.example.mjcnotice.database.Keyword
 import com.example.mjcnotice.databinding.FragmentNotificationBinding
 import com.github.kimcore.inko.Inko
-import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -53,8 +51,6 @@ class NotificationFragment : Fragment(), DeleteButtonListener, SignUpListener {
         model = ViewModelProvider(this).get(KeywordViewModel::class.java)
 
         initRecyclerView()
-
-        databaseReference.child("keywords").child("Hi").setValue(1)
 
         FirebaseDatabase.getInstance().reference
             .child("keywords")
@@ -91,7 +87,6 @@ class NotificationFragment : Fragment(), DeleteButtonListener, SignUpListener {
         })
 
         viewBinding.btnSubscribe.setOnClickListener {
-            Log.d("클릭", "클릭")
             var enteredKeyword = viewBinding.etKeyword.text.toString()
             model.searchKeyword(enteredKeyword) // 공지 이력 확인
         }
@@ -132,8 +127,6 @@ class NotificationFragment : Fragment(), DeleteButtonListener, SignUpListener {
 
         return viewBinding.root
     }
-
-
 
     private fun initRecyclerView() {
         viewBinding.rvKeyword.layoutManager = LinearLayoutManager(context)

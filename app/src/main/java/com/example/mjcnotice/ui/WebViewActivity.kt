@@ -1,23 +1,11 @@
-package com.example.mjcnotice
+package com.example.mjcnotice.ui
 
-import android.Manifest
 import android.annotation.SuppressLint
-import android.app.DownloadManager
-import android.content.Context
-import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.os.Environment
-import android.util.Log
-import android.webkit.*
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabsIntent
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.example.mjcnotice.databinding.ActivityWebViewBinding
-import java.net.URLDecoder
 
 
 class WebViewActivity : AppCompatActivity() {
@@ -31,6 +19,8 @@ class WebViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityWebViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        finish()
 
         baseUrl = intent.getStringExtra("urlStart").toString()
 

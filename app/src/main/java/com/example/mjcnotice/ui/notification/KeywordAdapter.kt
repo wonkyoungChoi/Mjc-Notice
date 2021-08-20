@@ -1,4 +1,4 @@
-package com.example.mjcnotice
+package com.example.mjcnotice.ui.notification
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -3,10 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="48dp"
-    android:background="@color/white"
-    android:paddingStart="16dp"
-    android:paddingLeft="16dp">
+    android:layout_height="wrap_content"
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/tv_keyword"
@@ -14,10 +12,12 @@
         android:layout_width="0dp"
         android:text="TextView"
         android:textSize="14sp"
+        android:layout_marginStart="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/btn_delete"/>
+        app:layout_constraintRight_toLeftOf="@id/btn_delete"
+        android:layout_marginLeft="16dp" />
 
     <ImageView
         android:id="@+id/btn_delete"
@@ -30,5 +30,14 @@
         app:layout_constraintBottom_toBottomOf="@id/tv_keyword"
         app:layout_constraintLeft_toRightOf="@id/tv_keyword"
         app:layout_constraintRight_toRightOf="parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="@color/colorBlack"
+        android:layout_marginTop="15dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_keyword"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

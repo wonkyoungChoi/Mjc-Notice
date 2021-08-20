@@ -1,10 +1,10 @@
-package com.example.mjcnotice
+package com.example.mjcnotice.ui.notice
 
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mjcnotice.ui.WebViewActivity
 import com.example.mjcnotice.databinding.NoticeListItemBinding
 import com.example.mjcnotice.databinding.NoticeLoadingBinding
 import java.util.*

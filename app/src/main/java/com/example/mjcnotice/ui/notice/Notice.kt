@@ -1,4 +1,4 @@
-package com.example.mjcnotice
+package com.example.mjcnotice.ui.notice
 
 data class Notice(val data: Data)
 

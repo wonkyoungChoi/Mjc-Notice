@@ -2,8 +2,8 @@ package com.example.mjcnotice.repository
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.mjcnotice.Data
-import com.example.mjcnotice.NoticeItem
+import com.example.mjcnotice.ui.notice.Data
+import com.example.mjcnotice.ui.notice.NoticeItem
 import com.example.mjcnotice.network.KeywordApi
 import com.example.mjcnotice.network.NoticeApi
 import okhttp3.ResponseBody
@@ -15,7 +15,6 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class NoticeRepository {
-    private val parameterNotice: MutableMap<String, String> = HashMap()
 
     var _notice = MutableLiveData<Data>()
     var _searchResult = MutableLiveData<Data>()
@@ -45,8 +44,6 @@ class NoticeRepository {
                             startIndex++
                         }
                     }
-
-
 
                     Log.d("startIndex", startIndex.toString())
 
@@ -81,6 +78,7 @@ class NoticeRepository {
     }
 
     fun searchKeyword(keyword: String){
+        val item = ArrayList<NoticeItem>()
 
         val call = KeywordApi.createApi().loadNotice("66", "TITLE", keyword)
 
@@ -90,47 +88,31 @@ class NoticeRepository {
                 response: Response<ResponseBody>
             ) {
                 if (response.isSuccessful) {
-                    var startIndex = 0
 
                     val doc: Document = Jsoup.parse(response.body()!!.string())
 
                     Log.d("DOC2", doc.toString())
-                    /*
-                    val check : Elements = doc.select("tr[class=cell_notice]").select("td:nth-child(n)").select("img")
-
-                    for(index: Int in check.indices) {
-                        if(check[index].attr("alt").equals("공지")) {
-                            startIndex++
-                        }
-                    }
-
-
-
-                    Log.d("startIndex", startIndex.toString())
 
                     val title: Elements = doc.select("tr").select("td[class=cell_type01]")
                     val date: Elements = doc.select("tr").select("td:nth-child(5n)")
                     val writer: Elements = doc.select("tr").select("td:nth-child(4n)")
                     val link : Elements = doc.select("tr").select("td[class=cell_type01]").select("a[href]")
 
-                    Log.d("DATEELEMENT", date[0].toString())
-                    Log.d("TITLEELEMENT", title[0].toString())
 
-                    for (index: Int in startIndex..title.lastIndex) { //indices -> 0..2
+                    for (index: Int in title.indices) { //indices -> 0..2
                         println("item at $index is ${title[index].text()}")
                         println("item at $index is ${writer[index].text()}")
                         println("item at $index is ${date[index].text()}")
                         val href = link[index].attr("href")
                         Log.d("HREF1", href)
 
-                        items.add(NoticeItem(href,title[index].text(), date[index].text(), writer[index].text()))
-
+                        item.add(NoticeItem(href,title[index].text(), date[index].text(), writer[index].text()))
 
                     }
 
-                    */
 
-                    _searchResult.value = Data(items)
+
+                    _searchResult.value = Data(item)
                 }
             }
 

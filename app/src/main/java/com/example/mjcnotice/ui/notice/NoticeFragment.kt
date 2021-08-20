@@ -1,4 +1,4 @@
-package com.example.mjcnotice
+package com.example.mjcnotice.ui.notice
 
 import android.os.Build
 import android.os.Bundle
@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mjcnotice.R
 import com.example.mjcnotice.databinding.FragmentNoticeBinding
 import com.google.android.material.tabs.TabLayout
 

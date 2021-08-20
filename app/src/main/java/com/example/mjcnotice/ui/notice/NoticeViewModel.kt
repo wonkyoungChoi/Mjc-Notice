@@ -1,4 +1,4 @@
-package com.example.mjcnotice
+package com.example.mjcnotice.ui.notice
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

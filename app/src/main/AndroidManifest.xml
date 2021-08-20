@@ -16,19 +16,38 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".MainActivity">
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_launcher" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+
+        <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WebViewActivity"/>
+        <activity android:name=".ui.WebViewActivity"/>
+        <activity android:name=".ui.setting.profile.ProfileActivity"/>
+        <activity android:name=".ui.setting.license.explanation.ExplanationLicenseActivity"/>
+        <activity android:name=".ui.setting.license.LicenseActivity"/>
+        <activity android:name=".ui.setting.appnotice.AppNoticeActivity"/>
+        <activity android:name=".ui.setting.appnotice.content.NoticeContentActivity"/>
+        <activity android:name=".ui.WebViewNotiActivity"/>
+        <activity android:name=".ui.MainActivity"/>
 
-        <service
-            android:name=".MyFirebaseMessagingService">
+        <service android:name=".MyFirebaseMessagingService"
+            android:enabled="true"
+            android:exported="true">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
     </application>

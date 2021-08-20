@@ -1,12 +1,14 @@
-package com.example.mjcnotice
+package com.example.mjcnotice.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.mjcnotice.ui.notice.NoticeFragment
+import com.example.mjcnotice.R
+import com.example.mjcnotice.ui.setting.SettingFragment
 import com.example.mjcnotice.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.mjcnotice.ui.notification.NotificationFragment
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
@@ -33,7 +35,6 @@ class MainActivity : AppCompatActivity() {
                 }
             )
             true }
-
     }
 
     private fun replaceFragment(fragment: Fragment) {
@@ -58,5 +59,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+
 
 }
