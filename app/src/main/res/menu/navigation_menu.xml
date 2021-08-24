@@ -10,7 +10,7 @@
 
     <item
         android:id="@+id/action_notification"
-        android:icon="@drawable/notification"
+        android:icon="@drawable/notification_change"
         android:visible="true"
         android:enabled="true"
         android:title="알림"/>

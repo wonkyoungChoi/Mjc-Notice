@@ -44,6 +44,10 @@ class ProfileActivity : AppCompatActivity() {
             it.context.startActivity(goPage)
         }
 
+        binding.ivBack.setOnClickListener {
+            finish()
+        }
+
         binding.tvAppVersion.text = "현재 버전 " + getAppVersion(this)
     }
 
