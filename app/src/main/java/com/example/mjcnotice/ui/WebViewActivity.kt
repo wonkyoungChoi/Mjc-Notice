@@ -22,19 +22,13 @@ class WebViewActivity : AppCompatActivity() {
 
         finish()
 
-        baseUrl = intent.getStringExtra("urlStart").toString()
+        url = intent.getStringExtra("url").toString()
 
-        url = intent.getStringExtra("urlEnd").toString()
-
-        val arr = url.split("('", "','", ",'")
-
-
-        val urlClick = baseUrl + "&bbs_mst_idx=" + arr[1] + "&data_idx=" + arr[2]
 
         val builder = CustomTabsIntent.Builder()
         val customTabsIntent = builder.build()
         builder.setShowTitle(true)
-        customTabsIntent.launchUrl(this, Uri.parse(urlClick))
+        customTabsIntent.launchUrl(this, Uri.parse(url))
 
 
     }

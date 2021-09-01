@@ -31,11 +31,11 @@ class NoticeRepository {
                     response: Response<ResponseBody>
             ) {
                 if (response.isSuccessful) {
+                    Log.d("PAGEINDEX", pageIndex.toString())
+
                     var startIndex = 0
 
                     val doc: Document = Jsoup.parse(response.body()!!.string())
-
-                    Log.d("DOC", doc.toString())
 
                     val check : Elements = doc.select("tr[class=cell_notice]").select("td:nth-child(n)").select("img")
 
@@ -45,27 +45,35 @@ class NoticeRepository {
                         }
                     }
 
-                    Log.d("startIndex", startIndex.toString())
-
                     val title: Elements = doc.select("tr").select("td[class=cell_type01]")
                     val date: Elements = doc.select("tr").select("td:nth-child(5n)")
                     val writer: Elements = doc.select("tr").select("td:nth-child(4n)")
                     val link : Elements = doc.select("tr").select("td[class=cell_type01]").select("a[href]")
 
-                    Log.d("DATEELEMENT", date[0].toString())
-                    Log.d("TITLEELEMENT", title[0].toString())
+                    Log.d("TITLELAST : " , title.lastIndex.toString())
 
-                    for (index: Int in startIndex..title.lastIndex) { //indices -> 0..2
-                        println("item at $index is ${title[index].text()}")
-                        println("item at $index is ${writer[index].text()}")
-                        println("item at $index is ${date[index].text()}")
-                        val href = link[index].attr("href")
-                        Log.d("HREF1", href)
+                    if(pageIndex == 1) {
+                        for (index: Int in title.indices) { //indices -> 0..2
+                            println("item at $index is ${title[index].text()}")
+                            println("item at $index is ${writer[index].text()}")
+                            println("item at $index is ${date[index].text()}")
+                            val href = link[index].attr("href")
+                            Log.d("HREF1", href)
 
-                        items.add(NoticeItem(href,title[index].text(), date[index].text(), writer[index].text()))
+                            items.add(NoticeItem(href, title[index].text(), date[index].text(), writer[index].text()))
+                        }
+                    } else {
+                        for (index: Int in startIndex..title.lastIndex) { //indices -> 0..2
+                            println("item at $index is ${title[index].text()}")
+                            println("item at $index is ${writer[index].text()}")
+                            println("item at $index is ${date[index].text()}")
+                            val href = link[index].attr("href")
+                            Log.d("HREF1", href)
+
+                            items.add(NoticeItem(href, title[index].text(), date[index].text(), writer[index].text()))
+                        }
+
                     }
-
-
 
                     _notice.value = Data(items)
                 }
@@ -91,8 +99,6 @@ class NoticeRepository {
 
                     val doc: Document = Jsoup.parse(response.body()!!.string())
 
-                    Log.d("DOC2", doc.toString())
-
                     val title: Elements = doc.select("tr").select("td[class=cell_type01]")
                     val date: Elements = doc.select("tr").select("td:nth-child(5n)")
                     val writer: Elements = doc.select("tr").select("td:nth-child(4n)")
@@ -106,7 +112,7 @@ class NoticeRepository {
                         val href = link[index].attr("href")
                         Log.d("HREF1", href)
 
-                        item.add(NoticeItem(href,title[index].text(), date[index].text(), writer[index].text()))
+                        item.add(NoticeItem(href, title[index].text(), date[index].text(), writer[index].text()))
 
                     }
 

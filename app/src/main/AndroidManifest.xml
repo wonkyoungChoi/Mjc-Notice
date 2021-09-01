@@ -40,7 +40,6 @@
         <activity android:name=".ui.setting.license.LicenseActivity"/>
         <activity android:name=".ui.setting.appnotice.AppNoticeActivity"/>
         <activity android:name=".ui.setting.appnotice.content.NoticeContentActivity"/>
-        <activity android:name=".ui.WebViewNotiActivity"/>
         <activity android:name=".ui.MainActivity"/>
 
         <service android:name=".MyFirebaseMessagingService"

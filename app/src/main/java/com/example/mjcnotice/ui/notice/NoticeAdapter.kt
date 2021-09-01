@@ -26,8 +26,10 @@ class NoticeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             binding.layoutNotice.setOnClickListener {
                 val goUnivHomepage = Intent(it.context, WebViewActivity::class.java)
 
-                goUnivHomepage.putExtra("urlStart", baseUrl)
-                goUnivHomepage.putExtra("urlEnd", notice.link)
+                val arr = notice.link.split("('", "','", ",'")
+                val urlClick = baseUrl + "&bbs_mst_idx=" + arr[1] + "&data_idx=" + arr[2]
+
+                goUnivHomepage.putExtra("url", urlClick)
 
                 it.context.startActivity(goUnivHomepage)
             }

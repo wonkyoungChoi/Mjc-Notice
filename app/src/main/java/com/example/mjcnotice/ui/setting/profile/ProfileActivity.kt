@@ -10,7 +10,7 @@ import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mjcnotice.R
 import com.example.mjcnotice.databinding.ActivityProfileBinding
-import com.example.mjcnotice.ui.WebViewNotiActivity
+import com.example.mjcnotice.ui.WebViewActivity
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -38,7 +38,7 @@ class ProfileActivity : AppCompatActivity() {
 
 
         binding.ivGithub.setOnClickListener {
-            var goPage = Intent(it.context, WebViewNotiActivity::class.java)
+            var goPage = Intent(it.context, WebViewActivity::class.java)
 
             goPage.putExtra("url", "")
             it.context.startActivity(goPage)

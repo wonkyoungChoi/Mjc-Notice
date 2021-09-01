@@ -11,7 +11,6 @@ import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.example.mjcnotice.ui.WebViewActivity
-import com.example.mjcnotice.ui.WebViewNotiActivity
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
@@ -50,7 +49,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     private fun sendNotification(remoteMessage: RemoteMessage) {
         val uniId: Int = (System.currentTimeMillis() / 7).toInt()
 
-        val intent = Intent(this, WebViewNotiActivity::class.java)
+        val intent = Intent(this, WebViewActivity::class.java)
         intent.putExtra("url", remoteMessage.data["url"])
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(this, uniId, intent, PendingIntent.FLAG_ONE_SHOT)

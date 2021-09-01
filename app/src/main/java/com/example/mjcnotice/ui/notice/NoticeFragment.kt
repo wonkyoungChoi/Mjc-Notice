@@ -46,7 +46,8 @@ class NoticeFragment : Fragment() {
         model.getAll().observe(viewLifecycleOwner, Observer {
             noticeAdapter.setList(it.content)
             isListEmpty = false
-            noticeAdapter.notifyItemRangeInserted((pageIndex - 1) * 15, 15)
+            noticeAdapter.notifyItemRangeInserted(it.content.size + 1, noticeAdapter.itemCount)
+
         })
 
         // 스크롤 리스너
