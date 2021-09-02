@@ -121,10 +121,6 @@ class NotificationFragment : Fragment(), DeleteButtonListener, SignUpListener {
             }
         })
 
-        viewBinding.ivBack.setOnClickListener {
-            requireActivity().finish()
-        }
-
         return viewBinding.root
     }
 

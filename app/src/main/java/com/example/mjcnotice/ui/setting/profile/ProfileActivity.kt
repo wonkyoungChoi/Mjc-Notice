@@ -23,10 +23,11 @@ class ProfileActivity : AppCompatActivity() {
 
         binding.layout1.visibility = View.INVISIBLE
         binding.layout2.visibility = View.INVISIBLE
+        binding.layout3.visibility = View.INVISIBLE
 
-        var ani = AnimationUtils.loadAnimation(this, R.anim.fadein)
-        var ani2 = AnimationUtils.loadAnimation(this, R.anim.fadein)
-        var ani3 = AnimationUtils.loadAnimation(this, R.anim.fadein)
+        val ani = AnimationUtils.loadAnimation(this, R.anim.fadein)
+        val ani2 = AnimationUtils.loadAnimation(this, R.anim.fadein)
+        val ani3 = AnimationUtils.loadAnimation(this, R.anim.fadein)
 
         binding.layout1.visibility = View.VISIBLE
         binding.layout1.startAnimation(ani)
@@ -35,6 +36,11 @@ class ProfileActivity : AppCompatActivity() {
             binding.layout2.visibility = View.VISIBLE
             binding.layout2.startAnimation(ani2)
         }, 1000L)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.layout3.visibility = View.VISIBLE
+            binding.layout3.startAnimation(ani3)
+        }, 1500L)
 
 
         binding.ivGithub.setOnClickListener {
