@@ -45,8 +45,7 @@ class ProfileActivity : AppCompatActivity() {
 
         binding.ivGithub.setOnClickListener {
             var goPage = Intent(it.context, WebViewActivity::class.java)
-
-            goPage.putExtra("url", "")
+            goPage.putExtra("url", "https://github.com/wonkyoungChoi/Mjc-Notice")
             it.context.startActivity(goPage)
         }
 
