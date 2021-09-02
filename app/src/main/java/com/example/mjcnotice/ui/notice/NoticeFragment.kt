@@ -42,7 +42,6 @@ class NoticeFragment : Fragment() {
         initRecylerView()
         initTabLayout()
 
-
         model.getAll().observe(viewLifecycleOwner, Observer {
             noticeAdapter.setList(it.content)
             isListEmpty = false

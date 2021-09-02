@@ -31,7 +31,6 @@ class NoticeRepository {
                     response: Response<ResponseBody>
             ) {
                 if (response.isSuccessful) {
-                    Log.d("PAGEINDEX", pageIndex.toString())
 
                     var startIndex = 0
 
@@ -50,31 +49,22 @@ class NoticeRepository {
                     val writer: Elements = doc.select("tr").select("td:nth-child(4n)")
                     val link : Elements = doc.select("tr").select("td[class=cell_type01]").select("a[href]")
 
-                    Log.d("TITLELAST : " , title.lastIndex.toString())
-
                     if(pageIndex == 1) {
-                        for (index: Int in title.indices) { //indices -> 0..2
-                            println("item at $index is ${title[index].text()}")
-                            println("item at $index is ${writer[index].text()}")
-                            println("item at $index is ${date[index].text()}")
+                        for (index: Int in title.indices) {
                             val href = link[index].attr("href")
-                            Log.d("HREF1", href)
-
-                            items.add(NoticeItem(href, title[index].text(), date[index].text(), writer[index].text()))
+                            if(index >= startIndex) {
+                                items.add(NoticeItem(href, title[index].text(), date[index].text(), writer[index].text(), false))
+                            } else {
+                                items.add(NoticeItem(href, title[index].text(), date[index].text(), writer[index].text(), true))
+                            }
                         }
                     } else {
-                        for (index: Int in startIndex..title.lastIndex) { //indices -> 0..2
-                            println("item at $index is ${title[index].text()}")
-                            println("item at $index is ${writer[index].text()}")
-                            println("item at $index is ${date[index].text()}")
+                        for (index: Int in startIndex..title.lastIndex) {
                             val href = link[index].attr("href")
-                            Log.d("HREF1", href)
-
-                            items.add(NoticeItem(href, title[index].text(), date[index].text(), writer[index].text()))
+                            items.add(NoticeItem(href, title[index].text(), date[index].text(), writer[index].text(), false))
                         }
 
                     }
-
                     _notice.value = Data(items)
                 }
             }
@@ -104,19 +94,10 @@ class NoticeRepository {
                     val writer: Elements = doc.select("tr").select("td:nth-child(4n)")
                     val link : Elements = doc.select("tr").select("td[class=cell_type01]").select("a[href]")
 
-
                     for (index: Int in title.indices) { //indices -> 0..2
-                        println("item at $index is ${title[index].text()}")
-                        println("item at $index is ${writer[index].text()}")
-                        println("item at $index is ${date[index].text()}")
                         val href = link[index].attr("href")
-                        Log.d("HREF1", href)
-
-                        item.add(NoticeItem(href, title[index].text(), date[index].text(), writer[index].text()))
-
+                        item.add(NoticeItem(href, title[index].text(), date[index].text(), writer[index].text(), false))
                     }
-
-
 
                     _searchResult.value = Data(item)
                 }

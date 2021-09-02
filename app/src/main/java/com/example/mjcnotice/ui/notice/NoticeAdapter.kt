@@ -1,6 +1,7 @@
 package com.example.mjcnotice.ui.notice
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -19,9 +20,20 @@ class NoticeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     inner class NoticeViewHolder(private val binding: NoticeListItemBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(notice: NoticeItem){
+
             binding.title.text = notice.title
             binding.writer.text = notice.writer
             binding.date.text = notice.date
+
+            if(notice.bold) {
+                binding.title.setTypeface(null, Typeface.BOLD)
+                binding.writer.setTypeface(null, Typeface.BOLD)
+                binding.date.setTypeface(null, Typeface.BOLD)
+            } else {
+                binding.title.setTypeface(null, Typeface.NORMAL)
+                binding.writer.setTypeface(null, Typeface.NORMAL)
+                binding.date.setTypeface(null, Typeface.NORMAL)
+            }
 
             binding.layoutNotice.setOnClickListener {
                 val goUnivHomepage = Intent(it.context, WebViewActivity::class.java)
@@ -79,7 +91,7 @@ class NoticeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     fun setList(notice: ArrayList<NoticeItem>) {
         items = notice
-        items.add(NoticeItem(" ", " ", " ", " ")) // progress bar 넣을 자리
+        items.add(NoticeItem(" ", " ", " ", " ", false)) // progress bar 넣을 자리
     }
 
     fun deleteLoading(){
