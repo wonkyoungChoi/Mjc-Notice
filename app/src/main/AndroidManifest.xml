@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.mjcnotice">
+    package="com.mjc.mjcnotice">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
@@ -27,22 +27,22 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
 
-        <activity android:name=".ui.SplashActivity">
+        <activity android:name="com.mjc.mjcnotice.ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.WebViewActivity"/>
-        <activity android:name=".ui.setting.profile.ProfileActivity"/>
-        <activity android:name=".ui.setting.license.explanation.ExplanationLicenseActivity"/>
-        <activity android:name=".ui.setting.license.LicenseActivity"/>
-        <activity android:name=".ui.setting.appnotice.AppNoticeActivity"/>
-        <activity android:name=".ui.setting.appnotice.content.NoticeContentActivity"/>
-        <activity android:name=".ui.MainActivity"/>
+        <activity android:name="com.mjc.mjcnotice.ui.WebViewActivity"/>
+        <activity android:name="com.mjc.mjcnotice.ui.setting.profile.ProfileActivity"/>
+        <activity android:name="com.mjc.mjcnotice.ui.setting.license.explanation.ExplanationLicenseActivity"/>
+        <activity android:name="com.mjc.mjcnotice.ui.setting.license.LicenseActivity"/>
+        <activity android:name="com.mjc.mjcnotice.ui.setting.appnotice.AppNoticeActivity"/>
+        <activity android:name="com.mjc.mjcnotice.ui.setting.appnotice.content.NoticeContentActivity"/>
+        <activity android:name="com.mjc.mjcnotice.ui.MainActivity"/>
 
-        <service android:name=".MyFirebaseMessagingService"
+        <service android:name="com.mjc.mjcnotice.MyFirebaseMessagingService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
