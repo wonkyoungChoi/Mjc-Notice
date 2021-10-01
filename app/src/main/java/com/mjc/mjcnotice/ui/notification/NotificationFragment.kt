@@ -32,11 +32,11 @@ class NotificationFragment : Fragment(), DeleteButtonListener, SignUpListener {
     private lateinit var map: Map<String, String>// 서버에 있는 키워드를 가져와서 저장할 변수
 
     private val databaseReference = FirebaseDatabase.getInstance().reference
+
     private var _viewBinding: FragmentNotificationBinding? = null
-
     private val viewBinding get() = _viewBinding!!
-    private lateinit var model: KeywordViewModel
 
+    private lateinit var model: KeywordViewModel
     private lateinit var adapter: KeywordAdapter
     private var myKeywordList = arrayListOf<Keyword>()
     private val inko = Inko()

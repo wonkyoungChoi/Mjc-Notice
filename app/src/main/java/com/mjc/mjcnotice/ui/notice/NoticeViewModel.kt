@@ -6,7 +6,7 @@ import com.mjc.mjcnotice.repository.NoticeRepository
 
 
 
-class MainViewModel : ViewModel() {
+class NoticeViewModel : ViewModel() {
     private val noticeRepository = NoticeRepository()
     private val notice: LiveData<Data>
         get() = noticeRepository._notice

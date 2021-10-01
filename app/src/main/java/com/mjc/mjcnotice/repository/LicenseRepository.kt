@@ -21,11 +21,6 @@ class LicenseRepository {
                 "Copyright 2013 Square, Inc."
             ),
             License(
-                "rxjava2",
-                "apache",
-                "Copyright (c) 2016-present, RxJava Contributors."
-            ),
-            License(
                 "lottie",
                 "lottie",
                 "Copyright 2018 Airbnb, Inc."

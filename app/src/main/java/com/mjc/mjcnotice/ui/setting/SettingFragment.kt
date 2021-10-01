@@ -11,27 +11,28 @@ import com.mjc.mjcnotice.databinding.FragmentSettingBinding
 
 class SettingFragment : Fragment() {
 
-    private var binding: FragmentSettingBinding? = null
+    private var _viewBinding: FragmentSettingBinding? = null
+    private val viewBinding get() = _viewBinding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentSettingBinding.inflate(inflater, container, false)
+    ): View {
+        _viewBinding = FragmentSettingBinding.inflate(inflater, container, false)
 
-        return binding?.root
+        return viewBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding!!.rvSetting.adapter = SettingAdapter()
-        binding!!.rvSetting.layoutManager = LinearLayoutManager(context)
-        binding!!.txtVersion.text = "현재 버전 " + getAppVersion(requireContext())
+        viewBinding.rvSetting.adapter = SettingAdapter()
+        viewBinding.rvSetting.layoutManager = LinearLayoutManager(context)
+        viewBinding.txtVersion.text = "현재 버전 " + getAppVersion(requireContext())
     }
 
     override fun onDestroyView() {
-        binding = null
+        _viewBinding = null
         super.onDestroyView()
     }
 

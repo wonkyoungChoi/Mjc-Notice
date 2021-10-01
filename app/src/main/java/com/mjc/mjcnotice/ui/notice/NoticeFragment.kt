@@ -12,16 +12,16 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.mjc.mjcnotice.R
 import com.mjc.mjcnotice.databinding.FragmentNoticeBinding
 import com.google.android.material.tabs.TabLayout
+import com.mjc.mjcnotice.R
 
 class NoticeFragment : Fragment() {
 
     private var _viewBinding: FragmentNoticeBinding? = null
     private val viewBinding get() = _viewBinding!!
     private lateinit var noticeAdapter: NoticeAdapter
-    private lateinit var model: MainViewModel
+    private lateinit var model: NoticeViewModel
     private var isListEmpty = true
     private var pageIndex = 1
     private var menu_idx = "66"
@@ -34,7 +34,7 @@ class NoticeFragment : Fragment() {
     ): View {
         _viewBinding = FragmentNoticeBinding.inflate(inflater, container, false)
 
-        model = ViewModelProvider(this).get(MainViewModel::class.java)
+        model = ViewModelProvider(this).get(NoticeViewModel::class.java)
 
         model.loadNotice(pageIndex, bbs_mst_idx, menu_idx)
         Log.v("로그", "로그")
@@ -83,7 +83,7 @@ class NoticeFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.M)
     private fun initTabLayout() {
         viewBinding.tabLayoutNotice.tabTextColors =
-            resources.getColorStateList(R.color.tap_icon, null)
+            resources.getColorStateList(R.drawable.tap_icon, null)
         viewBinding.tabLayoutNotice.addOnTabSelectedListener(object :
             TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {

@@ -54,8 +54,6 @@ class SettingAdapter : RecyclerView.Adapter<SettingAdapter.SettingViewHolder>() 
 
             }
 
-
-
             binding.tvSetting.text = menuName
             binding.layoutSetting.setOnClickListener {
                 it.context.startActivity(intent)
